@@ -1,0 +1,23 @@
+.BiggestPurchase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  background-color: #fff;
+  padding: 48px 16px;
+}
+
+.BiggestPurchase font {
+  color: #000;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 25px;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .BiggestPurchase font {
+    font-size: 2rem;
+    line-height: 65px;
+  }
+}
