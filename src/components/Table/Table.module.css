@@ -1,0 +1,38 @@
+.TableContainer {
+  width: 100%;
+}
+
+.Table {
+  width: 100%;
+  margin-top: 1.5em;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.Table th,
+.Table td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #000;
+}
+
+.Table th {
+  text-align: left;
+}
+
+.Table tr th {
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.Table thead th {
+  background-color: #742f37;
+}
+
+@media (min-width: 600px) {
+  .TableContainer {
+    width: 550px;
+  }
+}

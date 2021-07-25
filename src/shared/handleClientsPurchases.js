@@ -1,22 +1,20 @@
-import API from "../API";
-import axios from "axios";
-
-async function handleClientsPurchases() {
-  let clients = await axios.get(API.getClients);
-  let purchases = await axios.get(API.getPurchases);
-  adjustClientCode(purchases.data);
-  biggestTotalPurchaseValues(clients.data, purchases.data);
-  biggestPurchaseClient(clients.data, purchases.data);
-  mostLoyalCustomers(clients.data, purchases.data);
-}
+const handleClientsPurchases = (clients, purchases, option) => {
+  const options = {
+    1: biggestTotalPurchaseValues(clients, purchases),
+    2: biggestPurchaseClient(clients, purchases),
+    3: mostLoyalCustomers(clients, purchases),
+  };
+  return options[option];
+};
 
 // Função para ajustar o código do cliente (ficar compatível com o CPF)
-const adjustClientCode = (purchases) => {
+export const adjustClientCode = (purchases) => {
   purchases.forEach((purchase) => {
     let length = purchase.cliente.length;
     let lastDigits = purchase.cliente.slice(length - 2, length);
     purchase.cliente = `000.000.000-${lastDigits}`;
   });
+  return purchases;
 };
 
 // Função para separar os clientes com maior valor total em compras
@@ -42,7 +40,7 @@ const biggestTotalPurchaseValues = (clients, purchases) => {
     if (a.totalGasto > b.totalGasto) return -1;
     return 0;
   });
-  // console.log("Clientes com maior valor total em compras", totalPurchaseValues);
+  return totalPurchaseValues;
 };
 
 // Função para encontrar o cliente com maior compra única no último ano (2016)
@@ -60,11 +58,12 @@ const biggestPurchaseClient = (clients, purchases) => {
   });
   clients.forEach((c) => {
     if (c.cpf === client.cliente) {
+      c.itens = client.itens;
       client = c;
       client.valorTotal = biggestTotalValue;
     }
   });
-  // console.log("Cliente com maior compra única no último ano (2016)", client);
+  return client;
 };
 
 // Função para separar os clientes mais fieis
@@ -90,7 +89,7 @@ const mostLoyalCustomers = (clients, purchases) => {
     if (a.numeroCompras > b.numeroCompras) return -1;
     return 0;
   });
-  // console.log("Clientes mais fieis", purchasesAmount);
+  return purchasesAmount;
 };
 
 export default handleClientsPurchases;

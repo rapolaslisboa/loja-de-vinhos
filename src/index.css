@@ -12,7 +12,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fff;
+  background-color: rgb(245, 245, 245);
   scrollbar-width: thin;
   scrollbar-color: #90a4ae #cfd8dc;
 }

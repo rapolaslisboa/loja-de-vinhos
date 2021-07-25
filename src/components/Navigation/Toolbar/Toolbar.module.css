@@ -53,4 +53,10 @@
   .DesktopOnly {
     display: block;
   }
+  .Logo i {
+    font-size: 2em;
+  }
+  .Logo {
+    width: 100%;
+  }
 }
