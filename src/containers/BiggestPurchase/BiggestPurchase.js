@@ -21,7 +21,7 @@ const BiggestPurchase = ({ clients, purchases }) => {
         fez a maior compra única no último ano, 2016, no valor total de{" "}
         <strong>R$ {biggestPurchase.valorTotal}</strong>
       </p>
-      <p>Sua compra foi constituída pelos seguintes: </p>
+      <p>Sua compra foi constituída pelos seguintes itens: </p>
       <ul>
         {biggestPurchase.itens
           ? biggestPurchase.itens.map((product, index) => (

@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 import BiggestPurchase from "../../containers/BiggestPurchase/BiggestPurchase";
 import BiggestValues from "../../containers/BiggestValues/BiggestValues";
 import LoyalClients from "../../containers/LoyalClients/LoyalClients";
-import API from "../../API";
+import API from "../../services/API";
 import classes from "./Home.module.css";
 import { adjustClientCode } from "../../shared/handleClientsPurchases";
 
 const Home = () => {
   const [clients, setClients] = useState([]);
   const [purchases, setPurchases] = useState([]);
-  
+
   useEffect(() => {
     async function getData() {
       axios
